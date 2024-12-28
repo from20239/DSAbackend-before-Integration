@@ -27,12 +27,10 @@ public class BadgesService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBadges(@PathParam("userID") String userID) {
         // Dummy implementation
-        System.out.println("Fetching badges for user: " + userID);
+        System.out.println("Searching badges for user: " + userID);
 
         List<Badge> badges = new ArrayList<>();
-        badges.add(new Badge("Badge 1", "image1.png"));
-        badges.add(new Badge("Badge 2", "image2.png"));
-
+        badges.add(new Badge("Badge 1", "'https://cdn.pixabay.com/photo/2017/07/11/15/51/kermit-2493979_1280.png"));
         return Response.ok(badges).build();
     }
 }
