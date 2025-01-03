@@ -234,4 +234,9 @@ public class ManagerImpl implements Manager {
         return objects.size();
     }
 
+    @Override
+    public void addCustomLevel(CustomLevel level) throws SQLException {
+
+    }
+
 }

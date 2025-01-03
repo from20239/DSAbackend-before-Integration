@@ -2,10 +2,11 @@ package edu.upc.dsa.models;
 
 public class MapElement {
     private String id;
+    private String levelId;
     private int x;
     private int y;
 
-
+    public MapElement(){}
 
     public MapElement(String id, int x, int y) {
         this.id = id;
@@ -35,5 +36,13 @@ public class MapElement {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public String getLevelId() {
+        return levelId;
+    }
+
+    public void setLevelId(String levelId) {
+        this.levelId = levelId;
     }
 }

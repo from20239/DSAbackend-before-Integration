@@ -26,7 +26,7 @@ public class ScoresService {
     public Response submitScore(@PathParam("userID") String userID, ScoreData scoreData) {
         try {
             // Logic to store the score and level for the user
-            System.out.println("Received score for user: " + userID);
+            System.out.println("Received score for user: " + userID); //TODO !!!!! no es pot utilitzar això
             System.out.println("Score: " + scoreData.getScore() + ", Level: " + scoreData.getLevel());
 
             // Assuming the score is stored successfully
