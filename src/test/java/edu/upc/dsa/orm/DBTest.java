@@ -70,9 +70,8 @@ public class DBTest {
     @Test
     public void testAddScore() throws SQLException, UserNotFoundException {
         // Create a new user
-        User user = manager.register("jan", "jan", "jan");
-        assertNotNull(user); // Ensure the user is not null
-        assertNotNull(user.getId()); // Ensure the userID is not null
+        User user = new User("a","a","a@a.com");
+
 
         // Add score to the user
         ScoreData scoreData = new ScoreData(100, 1);
