@@ -1,5 +1,6 @@
 package edu.upc.dsa;
 
+import edu.upc.dsa.dao.DAO;
 import edu.upc.dsa.exceptions.*;
 import edu.upc.dsa.models.*;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface Manager {
+
 
     //User related
     User addUser(User t) throws SQLException;
@@ -59,4 +61,9 @@ public interface Manager {
     void addCustomLevel(CustomLevel level) throws SQLException;
 
     void addScore(String userID, ScoreData scoreData) throws SQLException, UserNotFoundException;
+    void updateUserLevel(String userID, int level) throws SQLException, UserNotFoundException {
+    }
+
+   int getUserLevel(String userID) throws SQLException, UserNotFoundException {
+    }
 }

@@ -1,5 +1,6 @@
 package edu.upc.dsa;
 
+import edu.upc.dsa.dao.DAO;
 import edu.upc.dsa.exceptions.*;
 import edu.upc.dsa.models.*;
 
@@ -243,6 +244,14 @@ public class ManagerImpl implements Manager {
     @Override
     public void addScore(String userID, ScoreData scoreData) throws SQLException {
 
+    }
+    public void updateUserLevel(String userID, int level) throws SQLException, UserNotFoundException {
+
+    }
+
+    public int getUserLevel(String userID) throws SQLException, UserNotFoundException {
+
+        return users.get(0).getLevel();
     }
 
 
