@@ -235,4 +235,30 @@ public class DAO implements Manager {
             session.save(e);
         }
     }
+
+    @Override
+    public void addScore(String userID, ScoreData scoreData) throws SQLException, UserNotFoundException {
+        List<User> users = session.findAll(User.class, Map.of("id", userID));
+        if (users == null || users.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+        User user = users.get(0);
+        int newScore = user.getPuntos() + scoreData.getScore();
+        session.update(User.class, Map.of("puntos", newScore), Map.of("id", userID));
+    }
+    public void updateUserLevel(String userID, int level) throws SQLException, UserNotFoundException {
+        List<User> users = session.findAll(User.class, Map.of("id", userID));
+        if (users == null || users.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+        session.update(User.class, Map.of("level", level), Map.of("id", userID));
+    }
+
+    public int getUserLevel(String userID) throws SQLException, UserNotFoundException {
+        List<User> users = session.findAll(User.class, Map.of("id", userID));
+        if (users == null || users.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+        return users.get(0).getLevel();
+    }
 }

@@ -2,6 +2,8 @@ package edu.upc.dsa.orm;
 
 import edu.upc.dsa.Manager;
 import edu.upc.dsa.dao.DAO;
+import edu.upc.dsa.exceptions.UserNotFoundException;
+import edu.upc.dsa.models.ScoreData;
 import edu.upc.dsa.models.StoreObject;
 import edu.upc.dsa.models.User;
 import org.apache.log4j.Logger;
@@ -14,6 +16,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class DBTest {
     final static Logger logger = Logger.getLogger(DBTest.class);
@@ -61,6 +66,22 @@ public class DBTest {
         Assert.assertEquals(5, manager.getUserByID(u.getId()).getPuntos());
         manager.deleteUser("a");
 
+    }
+    @Test
+    public void testAddScore() throws SQLException, UserNotFoundException {
+        // Create a new user
+        User user = manager.register("jan", "jan", "jan");
+        assertNotNull(user); // Ensure the user is not null
+        assertNotNull(user.getId()); // Ensure the userID is not null
+
+        // Add score to the user
+        ScoreData scoreData = new ScoreData(100, 1);
+        manager.addScore(user.getId(), scoreData);
+
+        // Retrieve the user and check the score
+        User updatedUser = manager.getUserByID(user.getId());
+        assertNotNull(updatedUser);
+        assertEquals(100, updatedUser.getPuntos());
     }
 
     @After

@@ -4,6 +4,11 @@ public class ScoreData {
     private int score;
     private int level;
 
+    public ScoreData(int score, int level) {
+        this.score = score;
+        this.level = level;
+    }
+
     public int getScore() {
         return score;
     }

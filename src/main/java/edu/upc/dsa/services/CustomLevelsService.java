@@ -13,12 +13,12 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Api(value = "/levels", description = "Service to manage user levels")
+@Api(value = "/levels", description = "Service to manage user custom levels")
 @Path("/levels")
 public class CustomLevelsService {
 
     Manager manager = DAO.getInstance();
-    final static Logger logger = Logger.getLogger(LevelsService.class);
+    final static Logger logger = Logger.getLogger(CustomLevelsService.class);
 
     @POST
     @Path("/uploadLevel")

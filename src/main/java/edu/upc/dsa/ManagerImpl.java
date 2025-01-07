@@ -3,6 +3,8 @@ package edu.upc.dsa;
 import edu.upc.dsa.exceptions.*;
 import edu.upc.dsa.models.*;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -238,5 +240,11 @@ public class ManagerImpl implements Manager {
     public void addCustomLevel(CustomLevel level) throws SQLException {
 
     }
+    @Override
+    public void addScore(String userID, ScoreData scoreData) throws SQLException {
+
+    }
+
+
 
 }
