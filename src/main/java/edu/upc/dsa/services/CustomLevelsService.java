@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 
 @Api(value = "/levels", description = "Service to manage user levels")
 @Path("/levels")
-public class LevelsService {
+public class CustomLevelsService {
 
     @POST
     @Path("/uploadLevel")
