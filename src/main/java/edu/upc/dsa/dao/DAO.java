@@ -226,4 +226,13 @@ public class DAO implements Manager {
     public int sizeObjects() {
         return 0;
     }
+
+    @Override
+    public void addCustomLevel(CustomLevel level) throws SQLException{
+        CustomLevel result = session.save(level);
+        for(MapElement e : level.getElements()){
+            e.setLevelId(result.getId());
+            session.save(e);
+        }
+    }
 }

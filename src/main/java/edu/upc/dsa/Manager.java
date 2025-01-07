@@ -55,4 +55,6 @@ public interface Manager {
     //Clear and Size of lists used (Users & StoreObjects)
     int sizeUsers();
     int sizeObjects();
+
+    void addCustomLevel(CustomLevel level) throws SQLException;
 }

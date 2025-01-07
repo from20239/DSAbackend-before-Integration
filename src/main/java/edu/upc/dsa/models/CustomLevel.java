@@ -1,11 +1,17 @@
 package edu.upc.dsa.models;
 
+import edu.upc.dsa.DB.SQLNotInsert;
+import edu.upc.dsa.DB.SQLNotSelect;
+
 import java.util.List;
 
 public class CustomLevel {
-    private List<MapElement> elements;
+    @SQLNotInsert private String id;
+    @SQLNotInsert @SQLNotSelect private List<MapElement> elements;
     private String levelName;
     private String userId;
+
+    public CustomLevel(){}
 
     public List<MapElement> getElements() {
         return elements;
@@ -29,5 +35,13 @@ public class CustomLevel {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
