@@ -1,6 +1,7 @@
 package edu.upc.dsa.orm;
 
 import java.lang.reflect.InvocationTargetException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -18,4 +19,5 @@ public interface Session {
     <T> List<T> findAll(Class<T> theClass, Map<String, Object> params) throws SQLException;
     <T> List<T> findAll(Class<T> theClass, String id) throws SQLException;
 
+    Connection getConnection();
 }
