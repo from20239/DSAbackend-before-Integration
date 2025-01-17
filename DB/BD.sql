@@ -16,7 +16,7 @@ CREATE TABLE User(
 
 --OBJECT INFORMATION TABLE
 CREATE TABLE StoreObject(
-	id VARCHAR(36) NOT NULL DEFAULT(uuid()),
+	id VARCHAR(255) NOT NULL,
 	name VARCHAR(255) NOT NULL,
 	price DOUBLE NOT NULL,
     description VARCHAR(1024) NOT NULL,
@@ -24,9 +24,13 @@ CREATE TABLE StoreObject(
 	PRIMARY KEY(id)
 );
 
-INSERT INTO StoreObject(name, price, url, description) VALUES ("Plàtan", 3, "images/platano.jpg", "descripció del plàtan");
-INSERT INTO StoreObject(name, price, url, description) VALUES ("Pell de plàtan", 1, "images/piel.jpg", "descripció de la pell de plàtan");
-INSERT INTO StoreObject(name, price, url, description) VALUES ("Poció màgica", 15, "images/pocion.jpg", "descripció de la poció");
+INSERT INTO StoreObject(id, name, price, url, description) VALUES ("innerWall", "Caja", 1, "images/innerWall.png", "Obstáculo del mapa");
+INSERT INTO StoreObject(id, name, price, url, description) VALUES ("innerWall2", "Piedras", 1, "images/innerWall2.png", "Obstáculo del mapa");
+INSERT INTO StoreObject(id, name, price, url, description) VALUES ("outerWall", "Pared", 1, "images/outerWall.png", "Pared para delimitar el área del nivel");
+INSERT INTO StoreObject(id, name, price, url, description) VALUES ("food", "Moneda", 3, "images/coin.png", "Monedas para comprar más ítems");
+INSERT INTO StoreObject(id, name, price, url, description) VALUES ("player", "Jugador", 7, "images/player.png", "Posición incial del jugador. Sólo se puede colocar uno por partida.");
+INSERT INTO StoreObject(id, name, price, url, description) VALUES ("enemy", "Serpiente", 3, "images/enemy.png", "Enemigos del juego");
+INSERT INTO StoreObject(id, name, price, url, description) VALUES ("exit", "Salida", 10, "images/exit.png", "Punto final del nivel. Sólo se puede colocar uno por partida");
 
 --INVENTORY TABLE OF ALL USERS
 CREATE TABLE Inventory(
