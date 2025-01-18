@@ -33,8 +33,8 @@ public class CustomLevel {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserId(String userName) {
+        this.userId = this.userId;
     }
 
     public String getId() {

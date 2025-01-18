@@ -66,5 +66,5 @@ public interface Manager {
 
 
    int getUserLevel(String userID) throws SQLException, UserNotFoundException;
-
+    List<CustomLevel> getCustomLevelsByUserId(String userId) throws SQLException;
 }

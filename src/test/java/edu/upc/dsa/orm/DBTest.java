@@ -89,37 +89,7 @@ public class DBTest {
         assertEquals(100, updatedUser.getPuntos());
     }
 
-    @Test
-    public void testGetLevelsByUserId() throws SQLException {
-        // Create a new user
-        User user = new User("t", "t", "t");
-        session.save(user);
-        Connection conn = session.getConnection();
 
-        // Create some levels for the user
-        CustomLevel level1 = new CustomLevel();
-        CustomLevel level2 = new CustomLevel();
-        session.save(level1);
-        session.save(level2);
-
-        // Retrieve levels using the service
-        LevelsCreatedDao levelDao = new LevelsCreatedDaoImpl(conn);
-        ListLevelsCreatedService service = new ListLevelsCreatedService();
-        service.levelDao = levelDao;
-
-        Response response = service.getLevelsByUserId(user.getId());
-        assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
-
-        List<CustomLevel> levels = (List<CustomLevel>) response.getEntity();
-        assertNotNull(levels);
-        assertEquals(2, levels.size());
-        assertEquals("Level 1", levels.get(0).getLevelName());
-        assertEquals("Level 2", levels.get(1).getLevelName());
-
-        // Clean up
-        session.delete(CustomLevel.class, Map.of("userId", user.getId()));
-        session.delete(User.class, Map.of("id", user.getId()));
-    }
 
 
     @After

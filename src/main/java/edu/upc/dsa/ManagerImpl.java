@@ -259,7 +259,10 @@ public class ManagerImpl implements Manager {
 
         return users.get(0).getLevel();
     }
-
+    @Override
+    public List<CustomLevel> getCustomLevelsByUserId(String userId) throws SQLException {
+        return DAO.getInstance().getCustomLevelsByUserId(userId);
+    }
 
 
 }

@@ -2,7 +2,9 @@ package edu.upc.dsa.services;
 
 import edu.upc.dsa.Manager;
 import edu.upc.dsa.dao.DAO;
+import edu.upc.dsa.exceptions.UserNotFoundException;
 import edu.upc.dsa.models.CustomLevel;
+import edu.upc.dsa.models.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -22,19 +24,20 @@ public class ListLevelsCreatedService {
     Manager manager = DAO.getInstance();
 
     @GET
-    @Path("/user/{userId}")
-    @ApiOperation(value = "Get levels by user ID", notes = "Retrieves all levels created by a user")
+    @Path("/user/{username}")
+    @ApiOperation(value = "Get levels by username", notes = "Retrieves all levels created by a user")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 500, message = "Internal server error")
     })
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getLevelsByUserId(@PathParam("userId") String userId) {
+    public Response getLevelsByUsername(@PathParam("username") String username) {
         try {
-            List<CustomLevel> levels = manager.getCustomLevels();
+            User user = manager.getUser(username);
+            List<CustomLevel> levels = manager.getCustomLevelsByUserId(user.getId());
             GenericEntity<List<CustomLevel>> entity = new GenericEntity<>(levels) {};
             return Response.ok(entity).build();
-        } catch (SQLException e) {
+        } catch (SQLException | UserNotFoundException e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
