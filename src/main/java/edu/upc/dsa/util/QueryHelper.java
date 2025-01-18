@@ -12,7 +12,7 @@ public class QueryHelper {
     public static String CreateQueryINSERT(Object entity){
 
         StringBuffer sb = new StringBuffer("INSERT INTO ");
-        sb.append(entity.getClass().getSimpleName()).append(" (");
+        sb.append(entity.getClass().getSimpleName()).append(" (id, ");
 
         String[] fields = ObjectHelper.getFields(entity);
 
@@ -26,7 +26,7 @@ public class QueryHelper {
         }
         sb.append(sj);
 
-        sb.append(") VALUES (");
+        sb.append(") VALUES (?, ");
 
         sj = new StringJoiner(", ");
         for (String field: fields) {
@@ -37,7 +37,7 @@ public class QueryHelper {
                 }
             } catch (NoSuchFieldException ignored) {}
         }
-        sb.append(sj).append(") RETURNING id;");
+        sb.append(sj).append(");");
 
         return sb.toString();
 

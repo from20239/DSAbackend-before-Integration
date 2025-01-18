@@ -241,6 +241,12 @@ public class ManagerImpl implements Manager {
     public void addCustomLevel(CustomLevel level) throws SQLException {
 
     }
+
+    @Override
+    public List<CustomLevel> getCustomLevels() throws SQLException {
+        return List.of();
+    }
+
     @Override
     public void addScore(String userID, ScoreData scoreData) throws SQLException {
 

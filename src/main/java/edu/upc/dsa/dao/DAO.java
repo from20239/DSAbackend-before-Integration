@@ -7,6 +7,7 @@ import edu.upc.dsa.orm.FactorySession;
 import edu.upc.dsa.orm.Session;
 import edu.upc.dsa.util.PasswordUtils;
 import org.apache.log4j.Logger;
+import org.glassfish.jersey.internal.inject.Custom;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -234,6 +235,14 @@ public class DAO implements Manager {
             e.setLevelId(result.getId());
             session.save(e);
         }
+    }
+    @Override
+    public List<CustomLevel> getCustomLevels() throws SQLException{
+        List<CustomLevel> levels = session.findAll(CustomLevel.class);
+        for (CustomLevel level : levels) {
+            level.setElements( session.findAll(MapElement.class, Map.of("levelId", level.getId())) );
+        }
+        return levels;
     }
 
     @Override

@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiResponses;
 import org.apache.log4j.Logger;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -29,7 +30,6 @@ public class CustomLevelsService {
     })
     @Consumes(MediaType.APPLICATION_JSON)
     public Response submitLevel(CustomLevel customLevel) {
-        //TODO verify the user is logged in
         try {
             manager.addCustomLevel(customLevel);
             return Response.ok().build();

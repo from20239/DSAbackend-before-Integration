@@ -59,6 +59,7 @@ public interface Manager {
     int sizeObjects();
 
     void addCustomLevel(CustomLevel level) throws SQLException;
+    List<CustomLevel> getCustomLevels() throws SQLException;
 
     void addScore(String userID, ScoreData scoreData) throws SQLException, UserNotFoundException;
     void updateUserLevel(String userID, int level) throws SQLException, UserNotFoundException;
