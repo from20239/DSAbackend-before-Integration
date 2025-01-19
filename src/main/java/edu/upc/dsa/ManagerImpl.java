@@ -260,8 +260,9 @@ public class ManagerImpl implements Manager {
         return users.get(0).getLevel();
     }
     @Override
-    public List<CustomLevel> getCustomLevelsByUserId(String userId) throws SQLException {
-        return DAO.getInstance().getCustomLevelsByUserId(userId);
+    public List<CustomLevel> getAllCustomLevels() throws SQLException {
+        // 直接从 DAO 获取所有自定义关卡
+        return DAO.getInstance().getAllCustomLevels();
     }
 
 
